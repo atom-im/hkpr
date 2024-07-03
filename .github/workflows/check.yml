@@ -1,0 +1,20 @@
+name: Enquire Appointment
+
+on:
+  push:
+  schedule:
+    - cron: '0 0-17 * * 1-5'  # Runs at minute 0 of every hour from 0 to 17 (UTC) on every day-of-week from Monday through Friday.
+  workflow_dispatch:
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run hkpr.sh
+      run: |
+        chmod +x ./hkpr.sh
+        ./hkpr.sh "${{ secrets.REFERENCE }}" "${{ secrets.BIRTHDAY }}"
