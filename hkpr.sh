@@ -6,7 +6,7 @@ usage() {
     echo "BIRTHDAY: Your date of birth in the format DD-MM-YYYY."
 }
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 2 ] || [ -z "$1" ] || [ -z "$2" ]; then
     usage
     exit 0
 fi
