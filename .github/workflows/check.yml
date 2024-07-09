@@ -9,6 +9,7 @@ on:
 jobs:
   run_script:
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
     - name: Checkout code
@@ -17,4 +18,10 @@ jobs:
     - name: Run hkpr.sh
       run: |
         chmod +x ./hkpr.sh
-        ./hkpr.sh "${{ secrets.REFERENCE }}" "${{ secrets.BIRTHDAY }}"
+        ./hkpr.sh "${{ secrets.REFERENCE }}" "${{ secrets.BIRTHDAY }}" "${{ secrets.SERVER }}"
+
+    - if: ${{ failure() }}
+      name: Disable workflow
+      run: gh workflow disable check.yml
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
