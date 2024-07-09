@@ -1,4 +1,4 @@
-# 第一时间获取香港永居申请结果
+# 🇭🇰 第一时间获取香港永居申请结果 🔔
 
 相信很多人都希望能第一时间了解香港永居申请的结果。可以主动联系第一封信件中负责处理的主任，请求通过电子邮件发送PDF格式的邀请函，这是最快获取结果的方式。除此之外，只能不时在线上查询申请状态了。官方的“网上查询申请状况”系统每天早上8点更新，但根据网友的经验，系统最早在邀约当晚12点后更新。
 
@@ -11,19 +11,19 @@
 ## 使用说明
 
 ### 第1步：设置你的代码仓库
-请将此仓库[导入到你的GitHub账户](https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer)中。考虑到隐私问题，建议在导入时将仓库设为`Private`，以确保只有你能访问，保护你的数据安全。
+请将此仓库[导入到你的GitHub账户](https://docs.github.com/zh/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer)中。考虑到隐私问题，建议在导入时将仓库设为`Private`，以确保只有你能访问，保护你的数据安全。
    - 导入仓库链接：[https://github.com/new/import](https://github.com/new/import)
 
 ### 第2步：配置密钥
-为保护你的隐私，需要将你的申请档案编号和出生日期设置为密钥。请在你的仓库设置中[添加所需密钥](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)，创建两个密钥：
+为保护你的隐私，需要将你的申请档案编号和出生日期设置为密钥。请在你的仓库设置中[添加所需密钥](https://docs.github.com/zh/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)，创建两个密钥：
    - `REFERENCE`：你的申请档案编号，格式为`RNVE-1234567-24(3)`。包括括号和括号里的验证码。
    - `BIRTHDAY`：你的出生日期，格式为日-月-年 `DD-MM-YYYY`。
 
-请确保档案编号和生日都正确配置，按照示例格式填写，因为代码中没有进行格式检查。
+请确保档案编号和生日都正确配置，按照示例格式填写。
 
-默认设置为每周一至周五，从上午8点至次日凌晨1点，每小时检查一次。GitHub将在GitHub Action失败时发送电子邮件。我们将利用此功能，在你的预约状态发生变化时通过电子邮件通知你。收到“Run failed: Enquire Appointment”的电子邮件后，即可查看你的预约详情。如果档案编号或生日填写错误，或查询系统出现问题，你也可能会收到错误邮件，可以在代码的Actions页面查看详细的运行结果日志，了解具体错误信息。
+默认设置为每周一至周五，从上午8点至次日凌晨1点，每小时检查一次。我们利用GitHub会在工作流运行失败时发送电子邮件的功能，在你的预约状态发生变化时主动报错，进而让GitHub通过电子邮件通知你。当你收到“Run failed: Enquire Appointment”的电子邮件后，即可前去邀约系统中查看你的预约详情。工作流此时会自动禁用以避免重复发送邮件。
 
-在你的香港永久居民申请成功后，请不要忘记[禁用GitHub Action](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow)。
+注意，如果档案编号或生日填写错误，或查询系统本身出现问题，你也可能会收到错误邮件，可以在GitHub代码主页的Actions页面查看详细的运行结果日志，了解具体错误信息并修复。报错后，工作流会被自动禁用，请重新[手动启用](https://docs.github.com/zh/actions/using-workflows/disabling-and-enabling-a-workflow)，否则后续无法继续查询并发出提示。
 
 ## 注意
 此工具仅适用于已获批准的香港永久居民身份资格验证申请。如果你的申请未被批准，入境事务处主任将不会安排预约，你也不会通过此工具收到任何通知。
