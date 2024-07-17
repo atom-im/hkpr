@@ -88,7 +88,7 @@ echo $result
 
 # Check if the code is not E-2106: NOT EXIST ARN
 code=$(echo $response | jq -r '.code')
-if [ "$code" != "E-2106" ]; then
+if [ -n "$result" ] && [ "$code" != "E-2106" ]; then
     # Exit with status 1 to trigger a failure email notification
     exit 1
 fi
