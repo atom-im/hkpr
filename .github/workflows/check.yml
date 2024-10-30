@@ -18,7 +18,7 @@ jobs:
     - name: Run hkpr.sh
       run: |
         chmod +x ./hkpr.sh
-        ./hkpr.sh "${{ secrets.REFERENCE }}" "${{ secrets.BIRTHDAY }}" "${{ secrets.SERVER }}"
+        ./hkpr.sh "${{ secrets.REFERENCE }}" "${{ secrets.BIRTHDAY }}"
 
     - if: ${{ failure() }}
       name: Disable workflow
