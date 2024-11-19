@@ -19,8 +19,7 @@ dob="$2" # e.g., 23-01-1990
 applicationRefNum=$(echo "$applicationRefNumFull" | sed -E 's/(.*)\([0-9A-Z]\)$/\1/')
 
 # Extract the checksum which is inside the brackets
-# arn2=$(echo "$applicationRefNumFull" | grep -oP '\(\K[^)]*')
-arn2=$(echo "$applicationRefNumFull" | sed -n 's/.*(\([0-9]*\)).*/\1/p')
+arn2=$(echo "$applicationRefNumFull" | sed -n 's/.*(\([0-9A-Z]*\)).*/\1/p')
 
 # Break down the date of birth
 enq_DOB_Date=$(echo "$dob" | cut -d'-' -f1)
